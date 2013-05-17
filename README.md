@@ -4,7 +4,7 @@ A simple jQuery pivot table widget
 
 ## Web site
 
-For examples and usages see: <http://jpivot.org>
+For examples and usages see: <http://www.jpivot.org>
 
 ## Version
 
