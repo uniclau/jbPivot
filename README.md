@@ -28,7 +28,7 @@ Insert a div where you want the table:
 
 Initialize the table:
 
-	$("#mytable").jPivot(options);
+	$("#myTable").jPivot(options);
 
 Wher options has the next format.
 
@@ -98,3 +98,4 @@ Uniclau S.L. <http://www.uniclau.com>
 	There is a copy of the license in the COPYING file in this directory.
 	
     You can also find it at <http://www.gnu.org/licenses/>.
+    
