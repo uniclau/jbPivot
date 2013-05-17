@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+  	<!-- 
+
+ 	Copyright 2013, 2013 Jordi Baylina. (jordi@baylina.cat)
+ 	
+  	This file is part of jPivot.
+
+    jPivot is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    jPivot is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with jPivot.  If not, see <http://www.gnu.org/licenses/>.
+  	
+  	 -->
+    
+   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+   	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+   	
+    <script src="../src/pivot.js"></script>
+    <script src="../src/group_distinct.js"></script>
+    <script src="../src/formatter_default.js"></script>
+    <script src="../src/agregate_count.js"></script>
+    <script src="../src/agregate_sum.js"></script>
+    <script src="../src/agregate_average.js"></script>
+    <script src="../src/agregate_distinct.js"></script>
+	<link rel="stylesheet" href="../css/jpivot.css">
+
+  <style>
+  	body {
+  		padding: 30px;
+  	}
+  </style>
+  
+  <script type="text/javascript">
+  	$(document).ready(function(){
+	  $("#pivot1").jPivot(
+			  {
+					fields: {
+							   Id : { field: 'id', sort: "asc", agregateType: "none"},
+					           Gender : { field: 'gender', sort: "asc", showAll:true, agregateType: "distinct"},
+					           Age : { field: 'age', sort: "asc", age: "Age", showAll:true, agregateType: "distinct"},
+					           Eyes: { field: 'eyes', sort: "asc", showAll:false, agregateType: "distinct"},
+					           Count: { agregateType: "count", groupType:"none" },
+					           Sum: { field: 'v', agregateType: "sum", groupType:"none" },
+					           Average: { field: 'v', agregateType: "average", groupType:"none", formatter: function (V,f) {
+					        	   var res=null;
+					        	   if (typeof(V) === "number") {
+					        		   res=V.toFixed(2);
+					        	   }
+					        	   return res;
+					           } }
+			  		},
+					xfields: [ "Gender","Eyes","Id" ],
+					yfields: [ "Age" ],
+					zfields: [ "Count", "Average", "Sum"],
+					data: [
+		           		{id:1 ,gender:"male", age:"30-40",eyes:"green", v:8},
+		           		{id:2 ,gender:"male", age:"20-30",eyes:"brown", v:7},
+		           		{id:3 ,gender:"male", age:"30-40",eyes:"brown", v:3},
+		           		{id:4 ,gender:"female", age:"40-50",eyes:"brown", v:5},
+		           		{id:5 ,gender:"male", age:"30-40",eyes:"green", v:7},
+		           		{id:6 ,gender:"male", age:"30-40",eyes:"green", v:9},
+		           		{id:7 ,gender:"female", age:"40-50",eyes:"green", v:8},
+		           		{id:8 ,gender:"female", age:"50-60",eyes:"brown", v:6},
+		           		{id:9 ,gender:"male", age:"30-40",eyes:"brown", v:9},
+		           		{id:10 ,gender:"male", age:"40-50",eyes:"blue", v:7},
+		           		{id:11 ,gender:"male", age:"30-40",eyes:"blue", v:4},
+		           		{id:12 ,gender:"male", age:"20-30",eyes:"black", v:2}
+		        	],
+		        	copyright: true,
+		        	summary: true
+			}	  
+	  );
+	});
+  </script>
+
+  </head>
+  <body>
+  	<div id="pivot1">  	
+  	</div>
+  </body>
+
+
+    
+</html>
+
