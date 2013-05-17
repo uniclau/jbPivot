@@ -22,9 +22,9 @@ Include jpivot and the css file:
     <script src="js/jpivot.min.js"></script>
 	<link rel="stylesheet" href="css/jpivot.css">
 
-Insert a div where youu want the table:
+Insert a div where you want the table:
 
-<div id="myTable"></div>
+	<div id="myTable"></div>
 
 Initialize the table:
 
@@ -78,7 +78,8 @@ Goto <http://www.jpivot.org> to see more examples.
 
 ## Author
 
-Jordi Baylina (jordi at baylina dot cat)
+Uniclau S.L. <http://www.uniclau.com> 
+<info@uniclau.com> 
 
 ## License
  
