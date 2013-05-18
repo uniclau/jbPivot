@@ -1,7 +1,7 @@
 /*
-  	Copyright 2013 Uniclau S.L. (www.uniclau.com)
-	
-  	This file is part of jPivot.
+    Copyright 2013 Uniclau S.L. (www.uniclau.com)
+    
+    This file is part of jPivot.
 
     jPivot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,16 +17,19 @@
     along with jPivot.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function formatter_default(options) {
-	this.format = function (value, field) {
-		var V="";
-		try {
-			V=value.toString();
-		} catch (Error) {
-			
-		}
-		return V;
-	};
+function formatter_default() {
+    "use strict";
+    var self = {};
+    self.format = function (value) {
+        var V = "";
+        try {
+            V = value.toString();
+        } catch (Error) {
+
+        }
+        return V;
+    };
+    return self;
 }
 
-unc.jPivot.addFormatter('default',formatter_default);
+$.unc.plugins.addFormatter('default', formatter_default);

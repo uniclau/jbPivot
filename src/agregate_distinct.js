@@ -1,7 +1,7 @@
 /*
- 	Copyright 2013 Uniclau S.L. (www.uniclau.com)
- 	
-  	This file is part of jPivot.
+    Copyright 2013 Uniclau S.L. (www.uniclau.com)
+    
+    This file is part of jPivot.
 
     jPivot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,59 +18,60 @@
  */
 
 function agregate_distinct(options) {
-	this.field = options.field;
-	this.agregate = function (a, b) {
-		var res = {type: "fa_distinct"};
-		if ((!a) || (a.type !== "fa_distinct")) {
-			res.repeated=false;
-			if (b.type ==="fa_distinct") {
-				res.val = b.val;
-			} else if (typeof b === "object") {
-				res.repeated=false;
-				if (  (typeof b[this.field] === "number") 
-				    ||(typeof b[this.field] === "string")) 
-				{
-					res.val = b[this.field];
-				} else {
-					res.val=null;
-				} 
-			} else {
-				res.val=null;
-			}
-		} else {
-			if (b.type ==="fa_distinct") {
-				res.repeated = (a.repeated || b.repeated || (a.val != b.val));
-				res.val = a.val;
-			} else if (typeof b === "object") {
-				if (  (typeof b[this.field] === "number") 
-				    ||(typeof b[this.field] === "string")) 
-				{
-					res.repeated = (a.repeated || (a.val != b[this.field]));
-					res.val = a.val;
-				} else {
-					res.repeated = (a.repeated || (a.val != null));
-					res.val=null;
-				} 
-			} else {
-				res.repeated = (a.repeated || (a.val != null));
-				res.val=null;
-			}
-		}
-			
-		return res;
-	};
-	
-	this.getValue = function(a) {
-		var res=null;
-		if ((a) && (a.type === "fa_distinct")) {
-			if (a.repeated) {
-				res = "*"
-			} else {
-				res= a.val;
-			}
-		}
-		return res;
-	};
+    "use strict";
+    var self = {};
+    self.field = options.field;
+    self.agregate = function (a, b) {
+        var res = {
+            type: "fa_distinct"
+        };
+        if ((!a) || (a.type !== "fa_distinct")) {
+            res.repeated = false;
+            if (b.type === "fa_distinct") {
+                res.val = b.val;
+            } else if (typeof b === "object") {
+                res.repeated = false;
+                if ((typeof b[this.field] === "number") || (typeof b[this.field] === "string")) {
+                    res.val = b[this.field];
+                } else {
+                    res.val = null;
+                }
+            } else {
+                res.val = null;
+            }
+        } else {
+            if (b.type === "fa_distinct") {
+                res.repeated = (a.repeated || b.repeated || (a.val !== b.val));
+                res.val = a.val;
+            } else if (typeof b === "object") {
+                if ((typeof b[this.field] === "number") || (typeof b[this.field] === "string")) {
+                    res.repeated = (a.repeated || (a.val !== b[this.field]));
+                    res.val = a.val;
+                } else {
+                    res.repeated = (a.repeated || (a.val !== null));
+                    res.val = null;
+                }
+            } else {
+                res.repeated = (a.repeated || (a.val !== null));
+                res.val = null;
+            }
+        }
+
+        return res;
+    };
+
+    self.getValue = function (a) {
+        var res = null;
+        if ((a) && (a.type === "fa_distinct")) {
+            if (a.repeated) {
+                res = "*";
+            } else {
+                res = a.val;
+            }
+        }
+        return res;
+    };
+    return self;
 }
 
-unc.jPivot.addAgregate('distinct',agregate_distinct);
+$.unc.plugins.addAgregate('distinct', agregate_distinct);

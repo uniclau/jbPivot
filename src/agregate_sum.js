@@ -1,7 +1,7 @@
 /*
- 	Copyright 2013 Uniclau S.L. (www.uniclau.com)
- 	
-  	This file is part of jPivot.
+    Copyright 2013 Uniclau S.L. (www.uniclau.com)
+    
+    This file is part of jPivot.
 
     jPivot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,37 +18,46 @@
  */
 
 function agregate_sum(options) {
-	this.field = options.field;
-	this.agregate = function (a, b) {
-		var res;
-		if ((!a) || (a.type !== "agregate_sum")) {
-			res = {type: "agregate_sum", sum:0};
-		} else {
-			res = {type: "agregate_sum", sum:a.sum};
-		}
-		if (b.type ==="agregate_sum") {
-			res.sum += b.sum;
-		} else if (typeof b === "object") {
-			if (typeof b[this.field] === "number") {
-				res.sum += b[this.field];
-			} else if (typeof b[this.field] === "string") {
-				try {
-					res.sum += parseInt(b[this.field]);
-				} catch (err) {
-					
-				}
-			}
-		}
-		return res;
-	};
-	
-	this.getValue = function(a) {
-		var res=null;
-		if ((a) && (a.type === "agregate_sum")) {
-			res = a.sum;
-		} 
-		return res;
-	};
+    "use strict";
+    var self = {};
+    self.field = options.field;
+    self.agregate = function (a, b) {
+        var res;
+        if ((!a) || (a.type !== "agregate_sum")) {
+            res = {
+                type: "agregate_sum",
+                sum: 0
+            };
+        } else {
+            res = {
+                type: "agregate_sum",
+                sum: a.sum
+            };
+        }
+        if (b.type === "agregate_sum") {
+            res.sum += b.sum;
+        } else if (typeof b === "object") {
+            if (typeof b[this.field] === "number") {
+                res.sum += b[this.field];
+            } else if (typeof b[this.field] === "string") {
+                try {
+                    res.sum += parseInt(b[this.field],10);
+                } catch (err) {
+
+                }
+            }
+        }
+        return res;
+    };
+
+    self.getValue = function (a) {
+        var res = null;
+        if ((a) && (a.type === "agregate_sum")) {
+            res = a.sum;
+        }
+        return res;
+    };
+    return self;
 }
 
-unc.jPivot.addAgregate('sum',agregate_sum);
+$.unc.plugins.addAgregate('sum', agregate_sum);
