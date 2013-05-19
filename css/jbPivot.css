@@ -1,20 +1,20 @@
 /*
  	Copyright 2013 Uniclau S.L. (www.uniclau.com)
  	
-  	This file is part of jPivot.
+  	This file is part of jbPivot.
 
-    jPivot is free software: you can redistribute it and/or modify
+    jbPivot is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    jPivot is distributed in the hope that it will be useful,
+    jbPivot is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with jPivot.  If not, see <http://www.gnu.org/licenses/>.
+    along with jbPivot.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 .pivot{
@@ -24,6 +24,21 @@
 	border: solid 0px;
 }
 
+
+.unused_fields{
+    display:table;
+    border-collapse:collapse;
+    border-spacing: 0px;
+    border: solid 0px;
+    float: left;
+}
+
+.unused_fields td,th { 
+    display: table-cell;
+    border:solid 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 
 .pivot td,th { 
@@ -104,6 +119,16 @@
 	border-right-width: 5px;
 	border-right-color: rgb(255,0,0);
 }
+
+.unused_fields .unused_field.dropping_pre {
+    border-top-width: 5px;
+    border-top-color: rgb(255,0,0);
+}
+
+.unused_fields .unused_field.dropping_post {
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(255,0,0);
+ dropping_post}
 
 .pivot .draggable {
 	cursor: move;

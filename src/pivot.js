@@ -1,20 +1,20 @@
 /*
 Copyright 2013 Uniclau S.L. (www.uniclau.com)
 
-This file is part of jPivot.
+This file is part of jbPivot.
 
-jPivot is free software: you can redistribute it and/or modify
+jbPivot is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-jPivot is distributed in the hope that it will be useful,
+jbPivot is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with jPivot.  If not, see <http://www.gnu.org/licenses/>.
+along with jbPivot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
@@ -41,7 +41,7 @@ $.unc = {
 
 $(function () {
     "use strict";
-    $.widget("unc.jPivot", {
+    $.widget("unc.jbPivot", {
 
         options: {
             fields: {},
@@ -78,7 +78,7 @@ $(function () {
 
                 //			var target=$(event.originalEvent.target);
                 var target = $(this);
-                var arr = target.attr('class').match(/\s+(target(X|Y|Z)[\d]+)($|\s)/);
+                var arr = target.attr('class').match(/\s+(target(X|Y|Z|U)[\d]+)($|\s)/);
                 var cls = "." + arr[1];
                 var el = self.element;
                 setTimeout(function () {
@@ -100,19 +100,19 @@ $(function () {
                 var offsetX = event.originalEvent.pageX - parentOffset.left;
                 var offsetY = event.originalEvent.pageY - parentOffset.top;
 
-                var arr = target.attr('class').match(/\s+(target(X|Y|Z)([\d]+))($|\s)/);
+                var arr = target.attr('class').match(/\s+(target(X|Y|Z|U)([\d]+))($|\s)/);
                 arr[3] = parseInt(arr[3], 10);
                 var cls = "." + arr[1];
 
                 var pre_post;
                 var oldpp = self.pre_post;
                 var oldcls = self.dragcls;
-                if (arr[2] === "Y") {
+                if ((arr[2] === "Y") || (arr[2] === "U")) {
                     pre_post = offsetY > target.height() / 2 ? "post" : "pre";
                 } else {
                     pre_post = offsetX > target.width() / 2 ? "post" : "pre";
                 }
-                if (((arr[2] === "X") || (arr[2] === "Y")) && (arr[3] === 0)) {
+                if (arr[3] === 0) {
                     pre_post = "post";
                 }
 
@@ -148,16 +148,16 @@ $(function () {
                 var offsetX = event.originalEvent.pageX - parentOffset.left;
                 var offsetY = event.originalEvent.pageY - parentOffset.top;
 
-                var arr = target.attr('class').match(/\s+(target(X|Y|Z)([\d]+))($|\s)/);
+                var arr = target.attr('class').match(/\s+(target(X|Y|Z|U)([\d]+))($|\s)/);
                 arr[3] = parseInt(arr[3], 10);
 
                 var pre_pos;
-                if (arr[2] === "Y") {
+                if ((arr[2] === "Y")|| (arr[2] === "U")) {
                     pre_pos = offsetY > target.height() / 2 ? "post" : "pre";
                 } else {
                     pre_pos = offsetX > target.width() / 2 ? "post" : "pre";
                 }
-                if (((arr[2] === "X") || (arr[2] === "Y")) && (arr[3] === 0)) {
+                if (arr[3] === 0) {
                     pre_pos = "post";
                 }
                 var from = event.originalEvent.dataTransfer.getData("Text");
@@ -173,13 +173,13 @@ $(function () {
             });
 
         },
-
         reset: function () {
             this.fields = [];
             this.afields = [];
             this.xfields = [];
             this.yfields = [];
             this.zfields = [];
+            this.ufields = [];
             this.fieldNames = [];
             this.fieldLabels = [];
             this.formatters = [];
@@ -266,6 +266,7 @@ $(function () {
                     throw ("Field " + fn + "is not groupable ans is ispecified in xfields");
                 }
                 this.xfields.push(indexbyname[fn]);
+                delete indexbyname[fn];
             }
             for (i = 0; i < this.options.yfields.length; i++) {
                 fn = this.options.yfields[i];
@@ -276,6 +277,7 @@ $(function () {
                     throw ("Field " + fn + "is not groupable ans is ispecified in yfields");
                 }
                 this.yfields.push(indexbyname[fn]);
+                delete indexbyname[fn];
             }
             for (i = 0; i < this.options.zfields.length; i++) {
                 fn = this.options.zfields[i];
@@ -286,8 +288,15 @@ $(function () {
                     throw ("Field " + fn + "is not agregatable ans is ispecified in zfields");
                 }
                 this.zfields.push(indexbyname[fn]);
+                delete indexbyname[fn];
+            }
+            for (fn in indexbyname) {
+            	if (indexbyname.hasOwnProperty(fn)) {
+            		this.ufields.push(indexbyname[fn]);
+            	}
             }
 
+            
             var mask = (1 << this.fields.length) - 1;
 
             this.indexes = {};
@@ -581,6 +590,24 @@ $(function () {
             this._tree2table("y", this.ytree, tabley);
 
             var S = "";
+            
+            S += "<table border='0px' cellspacing='0' cellpadding='0' class='unused_fields'><tr><th class='unused_field dropable targetU0' rel='U,0'>Unused fields</th>";
+            
+            for (i=0; i< this.ufields.length; i++) {
+            	S += "<tr><td draggable='true'";
+                cls = "unused_field draggable dropable";
+                cls += " targetU"+(i+1);
+
+                S += " class=\"" + cls + "\"";
+                
+                S += " rel= 'U," + (i+1) + "'";
+
+                S += ">";
+                S += this.fieldNames[this.ufields[i]];
+                S += "</td></tr>";
+            }
+            S += "</table>";
+
 
             S += "<table border=\"0px\" cellspacing=\"0\" cellpadding=\"0\" class=\"pivot\">";
 
@@ -593,17 +620,17 @@ $(function () {
 
             cls = "";
 
-            S += " class=\"" + cls + "\"";
-            cls = "line_bottom_" + cmax;
-            cls = "line_right_" + cmax;
+            cls += " line_bottom_" + cmax;
+            cls += " line_right_" + cmax;
 
+            S += " class=\"" + cls + "\"";
             S += ">";
 
             // Top left space -  Put buttons here
 
             S += "</th>";
 
-            colspan = tabley.length * this.zfields.length;
+            colspan = tabley.length * (this.zfields.length > 0 ?this.zfields.length : 1);
             S += "<th colspan=" + colspan + "\"";
 
             cls = "dropable toptitle targetY0 line_top_" + cmax;
@@ -640,7 +667,7 @@ $(function () {
 
                         S += " rel= \"Y," + y + "\"";
 
-                        colspan = tabley[x].cells[y].spany * this.zfields.length;
+                        colspan = tabley[x].cells[y].spany * (this.zfields.length > 0 ?this.zfields.length : 1);
 
                         S += " colspan=\"" + colspan + "\"";
                         S += " rowspan=\"" + tabley[x].cells[y].spanx + "\"";
@@ -669,7 +696,7 @@ $(function () {
 
                     cls += " line_top_0";
 
-                    cls += " targetZ" + z;
+                    cls += " targetZ" + (z+1);
 
 
                     cls += " line_top_" + cmax;
@@ -689,13 +716,40 @@ $(function () {
 
                     S += " class=\"" + cls + "\"";
 
-                    S += " rel= \"Z," + z + "\"";
+                    S += " rel= \"Z," + (z+1) + "\"";
 
                     S += ">";
 
                     S += this.fieldLabels[this.zfields[z]];
 
                     S += "</th>";
+                }
+                if (this.zfields.length === 0) {
+                    S += "<th";
+
+                    cls = "dropable ztitle";
+
+                    cls += " line_top_0";
+
+                    cls += " targetZ0";
+
+                    cls += " line_top_" + cmax;
+                    cls += this._clsLeftLine(tabley, x);
+                    cls += this._clsRightLine(tabley, x);
+
+                    //                  cls += this._clsGroupX(tablex, tabley, x, y);
+                    //                  cls += this._clsGroupY(tablex, tabley, x, y);
+
+                    S += " class='" + cls + "'";
+
+                    S += " rel= 'Z,0'";
+
+                    S += ">";
+
+                    S += "&nbsp;";
+
+                    S += "</th>";
+                	
                 }
             }
             S += "<tr>";
@@ -791,11 +845,29 @@ $(function () {
                         this.zfields[z]);
                         S += "</td>";
                     }
+                    if (this.zfields.length === 0) {
+                        S += "<td";
+
+                        cls = "";
+
+                        cls += this._clsTopLine(tablex, y);
+                        cls += this._clsBottomLine(tablex, y);
+                        cls += this._clsLeftLine(tabley, x);
+                        cls += this._clsRightLine(tabley, x);
+
+                        //                       cls += this._clsGroupX(tablex, tabley, x, y);
+                        //                       cls += this._clsGroupY(tablex, tabley, x, y);
+
+                        S += " class='" + cls + "'";
+                        S += ">";
+                        S += "&nbsp;";
+                        S += "</td>";
+                    }
                 }
                 S += "</tr>";
             }
 
-            if (this.options.summary) {
+            if ((this.options.summary)&&(this.zfields.length>0)) {
                 S += "<tr>";
                 S += "<td colspan='" + (this.xfields.length + 1) + "'";
                 S += " >";
@@ -871,7 +943,7 @@ $(function () {
                 S += " class='" + cls + "'";
                 S += ">";
 
-                S += "<a href='http://www.jpivot.org'>jPivot</a> by <a href='http://www.uniclau.org'> Uniclau S.L. &copy; 2013 </a> <a href='http://www.gnu.org/licenses/gpl.html'><img src='http://www.gnu.org/graphics/gplv3-88x31.png'></a>";
+                S += "<a href='http://www.jbPivot.org'>jbPivot</a> by <a href='http://www.uniclau.org'> Uniclau S.L. &copy; 2013 </a> <a href='http://www.gnu.org/licenses/gpl.html'><img src='http://www.gnu.org/graphics/gplv3-88x31.png'></a>";
 
                 S += "</tr>";
             }
@@ -926,9 +998,7 @@ $(function () {
             if (prepos === "pre") {
                 t[1]--;
             }
-            if ((f[0] === "X") || (f[0] === "Y")) {
-                f[1]--;
-            }
+            f[1]--;
 
             var res = false;
             if (t[0] === "Z") {
@@ -938,15 +1008,21 @@ $(function () {
                     res = (this.afields[this.yfields[f[1]]] !== null);
                 } else if (f[0] === "Z") {
                     res = (this.afields[this.zfields[f[1]]] !== null);
+                } else if (f[0] === "U") {
+                    res = (this.afields[this.ufields[f[1]]] !== null);
                 }
-            } else {
+            } else if ((t[0] === "X") || (t[0] === "Y")) {
                 if (f[0] === "X") {
                     res = (this.fields[this.xfields[f[1]]] !== null);
                 } else if (f[0] === "Y") {
                     res = (this.fields[this.yfields[f[1]]] !== null);
                 } else if (f[0] === "Z") {
                     res = (this.fields[this.zfields[f[1]]] !== null);
+                } else if (f[0] === "U") {
+                    res = (this.fields[this.ufields[f[1]]] !== null);
                 }
+            } else if (t[0] === "U") {
+            	res = true;
             }
             return res;
 
@@ -961,33 +1037,36 @@ $(function () {
                 t[1]--;
             }
 
-            var field;
+            var field = -1;
             if (f[0] === "X") {
                 field = this.xfields[f[1] - 1];
                 this.xfields.splice(f[1] - 1, 1);
             } else if (f[0] === "Y") {
                 field = this.yfields[f[1] - 1];
                 this.yfields.splice(f[1] - 1, 1);
-            } else {
-                field = this.zfields[f[1]];
-                this.zfields.splice(f[1], 1);
+            } else if (f[0] === "Z") {
+                field = this.zfields[f[1] - 1];
+                this.zfields.splice(f[1] - 1, 1);
+            } else if (f[0] === "U") {
+                field = this.ufields[f[1] -1];
+                this.ufields.splice(f[1] -1, 1);
             }
-
+            
+            if (field === -1) {
+            	throw "Assert: "+ f[0] + " is an invalid axis";
+            }
+ 
+            if ((f[0] === t[0]) && (f[1] < t[1])) {
+                t[1]--;
+            }
             if (t[0] === "X") {
-                if ((f[0] === t[0]) && (f[1] < t[1])) {
-                    t[1]--;
-                }
                 this.xfields.splice(t[1], 0, field);
             } else if (t[0] === "Y") {
-                if ((f[0] === t[0]) && (f[1] < t[1])) {
-                    t[1]--;
-                }
                 this.yfields.splice(t[1], 0, field);
-            } else {
-                if ((f[0] !== t[0]) || ((f[0] === t[0]) && (f[1] > t[1]))) {
-                    t[1]++;
-                }
+            } else if (t[0] === "Z") {
                 this.zfields.splice(t[1], 0, field);
+            } else if (t[0] === "U") {
+                this.ufields.splice(t[1], 0, field);
             }
 
             this._generate_trees();

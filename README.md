@@ -1,10 +1,10 @@
-# jPivot
+# jbPivot
 
 A simple jQuery pivot table widget
 
 ## Web site
 
-For examples and usages see: <http://www.jpivot.org>
+For examples and usages see: <http://www.jbPivot.org>
 
 ## Version
 
@@ -17,10 +17,10 @@ Include jquery and jqueryui:
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-Include jpivot and the css file:
+Include jbPivot and the css file:
 
-    <script src="js/jpivot.min.js"></script>
-	<link rel="stylesheet" href="css/jpivot.css">
+    <script src="js/jbPivot.min.js"></script>
+	<link rel="stylesheet" href="css/jbPivot.css">
 
 Insert a div where you want the table:
 
@@ -28,7 +28,7 @@ Insert a div where you want the table:
 
 Initialize the table:
 
-	$("#myTable").jPivot(options);
+	$("#myTable").jbPivot(options);
 
 Wher options has the next format.
 
@@ -73,7 +73,7 @@ Yo can insert more records to the table dinamicaly:
 		  		,...(0..n)
 		  	]);
 		  	
-Goto <http://www.jpivot.org> to see more examples.
+Goto <http://www.jbPivot.org> to see more examples.
 
 
 ## Author
