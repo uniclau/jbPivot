@@ -1,0 +1,374 @@
+/*
+ 	Copyright 2013 Uniclau S.L. (www.uniclau.com)
+ 	
+  	This file is part of jbPivot.
+
+    jbPivot is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    jbPivot is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with jbPivot.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.pivot{
+    display:table;
+    border-collapse:collapse;
+    border-spacing: 0px;
+	border: solid 0px;
+}
+
+
+.unused_fields{
+    display:table;
+    border-collapse:collapse;
+    border-spacing: 0px;
+    border: solid 0px;
+    float: left;
+}
+
+.unused_fields td,th { 
+    display: table-cell;
+    border:solid 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+.pivot td,th { 
+    display: table-cell;
+    border:solid 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.pivot td {
+ 	text-align: center;
+	background-color: #EEFFFF;
+}
+
+.pivot .lefttitle {
+ 	text-align: left;
+	background-color: #D0FFFF;
+}
+
+.pivot .toptitle {
+ 	text-align: center;
+	background-color: #D0FFFF;
+}
+
+.pivot .ztitle {
+ 	text-align: center;
+	background-color: #20FFFF;
+}
+
+.pivot .summary {
+ 	text-align: center;
+	background-color: #20FFFF;
+}
+
+.pivot .copyright {
+	font-size: x-small;
+	border-size:0px;
+	text-align: right;
+	vertical-align: middle;
+	height: 15px;
+	padding: 2px;
+}
+
+.pivot .copyright img {
+	height: 12px;
+	width: auto;	
+	padding-left:5px;
+	float: right;
+}
+
+
+.pivot .toptitle.dropping_pre {
+	border-top-width: 5px;
+	border-top-color: rgb(255,0,0);
+}
+
+.pivot .toptitle.dropping_post {
+	border-bottom-width: 5px;
+	border-bottom-color: rgb(255,0,0);
+}
+
+.pivot .lefttitle.dropping_pre {
+	border-left-width: 5px;
+	border-left-color: rgb(255,0,0);
+}
+
+.pivot .lefttitle.dropping_post {
+	border-right-width: 5px;
+	border-right-color: rgb(255,0,0);
+}
+
+.pivot .ztitle.dropping_pre {
+	border-left-width: 5px;
+	border-left-color: rgb(255,0,0);
+}
+
+.pivot .ztitle.dropping_post {
+	border-right-width: 5px;
+	border-right-color: rgb(255,0,0);
+}
+
+.unused_fields .unused_field.dropping_pre {
+    border-top-width: 5px;
+    border-top-color: rgb(255,0,0);
+}
+
+.unused_fields .unused_field.dropping_post {
+    border-bottom-width: 5px;
+    border-bottom-color: rgb(255,0,0);
+ dropping_post}
+
+.pivot .draggable {
+	cursor: move;
+}
+
+.pivot.drag_in_progress th>* {
+	pointer-events:none;
+	backgroun-color: #FF0000;
+}
+
+
+.pivot .collapse_button {
+    background: #4479BA;
+    padding: 1px 7px;   
+    color: #FFF;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-top: 3px;
+    border-radius: 20px;
+    font: bold 11px Arial;
+    -moz-box-shadow:    2px 2px 4px 1px #ccc;
+    -webkit-box-shadow: 2px 2px 4px 1px #ccc;
+    box-shadow:         2px 2px 4px 1px #ccc;
+}
+
+.pivot .bordermark {
+	border-left-width: 5px;
+	border-right-width: 5px;
+	border-bottom-width: 0px;
+	border-left-color: rgba(0,231,0,1);
+	border-right-color: rgba(0,231,0,1);
+	border-bottom-color: rgba(0,231,0,1);
+}
+
+.pivot .lefttitle .collapse_button {
+    float: left;
+}
+
+.pivot .line_top_0 {
+	border-top-width: 0px;
+	border-top-color: rgb(231,231,231);
+}
+
+.pivot .line_top_1 {
+	border-top-width: 1px;
+	border-top-color: rgb(201,201,201);
+}
+
+.pivot .line_top_2 {
+	border-top-width: 1px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_3 {
+	border-top-width: 2px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_4 {
+	border-top-width: 3px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_5 {
+	border-top-width: 4px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_6 {
+	border-top-width: 5px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_7 {
+	border-top-width: 6px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_8 {
+	border-top-width: 7px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_9 {
+	border-top-width: 8px;
+	border-top-color: rgb(51,51,51);
+}
+
+.pivot .line_top_10 {
+	border-top-width: 9px;
+	border-top-color: rgb(51,51,51);
+}
+
+
+
+.pivot .line_bottom_0 {
+	border-bottom-width: 0px;
+	border-bottom-color: rgb(231,231,231);
+}
+
+.pivot .line_bottom_1 {
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(201,201,201);
+}
+
+.pivot .line_bottom_2 {
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_3 {
+	border-bottom-width: 2px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_4 {
+	border-bottom-width: 3px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_5 {
+	border-bottom-width: 4px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_6 {
+	border-bottom-width: 5px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_7 {
+	border-bottom-width: 6px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_8 {
+	border-bottom-width: 7px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_9 {
+	border-bottom-width: 8px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+.pivot .line_bottom_10 {
+	border-bottom-width: 9px;
+	border-bottom-color: rgb(51,51,51);
+}
+
+
+
+.pivot .line_left_0 {
+	border-left-width: 1px;
+	border-left-color: rgb(231,231,231);
+}
+.pivot .line_left_1 {
+	border-left-width: 1px;
+	border-left-color: rgb(201,201,201);
+}
+.pivot .line_left_2 {
+	border-left-width: 1px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_3 {
+	border-left-width: 2px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_4 {
+	border-left-width: 3px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_5 {
+	border-left-width: 4px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_6 {
+	border-left-width: 5px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_7 {
+	border-left-width: 6px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_8 {
+	border-left-width: 7px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_9 {
+	border-left-width: 8px;
+	border-left-color: rgb(51,51,51);
+}
+.pivot .line_left_10 {
+	border-left-width: 9px;
+	border-left-color: rgb(51,51,51);
+}
+
+
+.pivot .line_right_0 {
+	border-right-width: 1px;
+	border-right-color: rgb(231,231,231);
+}
+.pivot .line_right_1 {
+	border-right-width: 1px;
+	border-right-color: rgb(201,201,201);
+}
+.pivot .line_right_2 {
+	border-right-width: 1px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_3 {
+	border-right-width: 2px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_4 {
+	border-right-width: 3px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_5 {
+	border-right-width: 4px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_6 {
+	border-right-width: 5px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_7 {
+	border-right-width: 6px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_8 {
+	border-right-width: 7px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_9 {
+	border-right-width: 8px;
+	border-right-color: rgb(51,51,51);
+}
+.pivot .line_right_10 {
+	border-right-width: 9px;
+	border-right-color: rgb(51,51,51);
+}
+
