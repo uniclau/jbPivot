@@ -17,8 +17,8 @@
 #    along with jbPivot.  If not, see <http://www.gnu.org/licenses/>.
 
 rm build/*
-cat src/pivot.js src/group_*.js src/agregate_*.js src/formatter_*.js  > build/jbPivot.js
-cat css/*.css > build/jbPivot.css
-java -jar ~/git/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar build/jbPivot.js -o build/jbPivot.min.js
-java -jar ~/git/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar build/jbPivot.css -o build/jbPivot.min.css
+cat src/pivot.js src/group_*.js src/agregate_*.js src/formatter_*.js  > build/jbpivot.js
+cat css/*.css > build/jbpivot.css
+java -jar ~/git/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar build/jbPivot.js -o build/jbpivot.min.js
+java -jar ~/git/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar build/jbPivot.css -o build/jbpivot.min.css
 

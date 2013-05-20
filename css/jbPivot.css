@@ -27,17 +27,31 @@
 
 .unused_fields{
     display:table;
-    border-collapse:collapse;
     border-spacing: 0px;
-    border: solid 0px;
+    border: solid 2px;
+    margin-right: 15px;
     float: left;
+    border-color: rgb(51,51,51);
 }
 
-.unused_fields td,th { 
+.unused_fields th { 
     display: table-cell;
     border:solid 0px;
-    padding-left: 5px;
+    padding-left: 10px;
     padding-right: 5px;
+    background-color: #D0FFFF;
+    border-bottom-color: rgb(51,51,51);
+    border-bottom-width: 2px;
+}
+
+.unused_fields td { 
+    display: table-cell;
+    border:solid 0px;
+    padding-left: 10px;
+    padding-right: 5px;
+    border-color: #20FFFF;
+    background-color: #20FFFF;
+    font-weight: bold;
 }
 
 
