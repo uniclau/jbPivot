@@ -1,0 +1,43 @@
+{
+    "name": "jbPivot",
+    "title": "jQuery jbPivot",
+    "description": "A simple pivot table jQuery widget",
+    "keywords": [
+        "table",
+        "grid",
+        "pivot",
+        "grouping",
+        "analyze",
+        "agregate"],
+    "version": "0.1.0",
+    "author": {
+        "name": "Jordi Baylina",
+        "email": "baylina@uniclau.com",
+        "url": "http://www.jbpivot.org"
+    },
+    "maintainers": [
+        {
+            "name": "Jordi Baylina",
+            "email": "baylina@uniclau.com",
+            "url": "http://www.jbpivot.org"
+        },
+        {
+            "name": "Jordi Moraleda",
+            "email": "moraleda@uniclau.com",
+            "url": "http://www.uniclau.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "GPLv3",
+            "url": "http://www.gnu.org/licenses/gpl.html"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.4"
+    },
+    "bugs": "https://github.com/uniclau/jbPivot/issues",    
+    "homepage": "http://www.jbpivot.org",
+    "docs": "https://github.com/uniclau/jbPivot/blob/master/README.md",
+    "demo": "http://www.jbpivot.org"
+}
