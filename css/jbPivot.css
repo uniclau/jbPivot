@@ -223,14 +223,14 @@ body
     border-radius: 2px;
 }
 
-/*.pivot .bordermark {
+.pivot .bordermark {
 	border-left-width: 5px;
 	border-right-width: 5px;
 	border-bottom-width: 0px;
-	border-left-color: rgba(0,231,0,1);
-	border-right-color: rgba(0,231,0,1);
-	border-bottom-color: rgba(0,231,0,1);
-}*/
+	border-left-color: rgba(0,231,0,0);
+	border-right-color: rgba(0,231,0,0);
+	border-bottom-color: rgba(0,231,0,0);
+}
 
 .pivot .lefttitle .collapse_button {
     float: left;
