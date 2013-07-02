@@ -17,6 +17,12 @@
     along with jbPivot.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+body
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
 .pivot{
     display:table;
     border-collapse:collapse;
@@ -28,63 +34,61 @@
 .unused_fields{
     display:table;
     border-spacing: 0px;
-    border: solid 2px;
+    border: solid 1px;
     margin-right: 15px;
     float: left;
-    border-color: rgb(51,51,51);
+    border-color: #777;
 }
 
 .unused_fields th { 
     display: table-cell;
     border:solid 0px;
-    padding-left: 10px;
-    padding-right: 5px;
-    background-color: #D0FFFF;
-    border-bottom-color: rgb(51,51,51);
-    border-bottom-width: 2px;
+	padding: 5px 9px 5px;
+    background-color: #777;
+    color: white;
+    border-bottom-color: #777;
+    border-bottom-width: 1px;
 }
 
 .unused_fields td { 
     display: table-cell;
     border:solid 0px;
-    padding-left: 10px;
-    padding-right: 5px;
-    border-color: #20FFFF;
-    background-color: #20FFFF;
-    font-weight: bold;
+	padding: 5px 9px 5px;
+    background-color: #f9f9f9;
 }
 
 
 .pivot td,th { 
     display: table-cell;
     border:solid 0px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 5px 7px 5px;
 }
 
 .pivot td {
  	text-align: center;
-	background-color: #EEFFFF;
+	background-color: white;
 }
 
 .pivot .lefttitle {
  	text-align: left;
-	background-color: #D0FFFF;
+	background-color: #f9f9f9;
 }
 
 .pivot .toptitle {
  	text-align: center;
-	background-color: #D0FFFF;
+	background-color: #f9f9f9;
 }
 
 .pivot .ztitle {
  	text-align: center;
-	background-color: #20FFFF;
+	background-color: #999;
+	color: white;
 }
 
 .pivot .summary {
  	text-align: center;
-	background-color: #20FFFF;
+	background-color: #777;
+	color: white;
 }
 
 .pivot .copyright {
@@ -156,26 +160,28 @@
 
 .pivot .collapse_button {
     background: #4479BA;
-    padding: 1px 7px;   
+	margin-top: 2px !important;
+	padding: 1px 7px 2px;
     color: #FFF;
     text-decoration: none;
     margin-right: 5px;
     margin-top: 3px;
-    border-radius: 20px;
-    font: bold 11px Arial;
+    font: bold 12px Arial;
+	height: 1.2em;
+    /*border-radius: 20px;
     -moz-box-shadow:    2px 2px 4px 1px #ccc;
     -webkit-box-shadow: 2px 2px 4px 1px #ccc;
-    box-shadow:         2px 2px 4px 1px #ccc;
+    box-shadow:         2px 2px 4px 1px #ccc;*/
 }
 
-.pivot .bordermark {
+/*.pivot .bordermark {
 	border-left-width: 5px;
 	border-right-width: 5px;
 	border-bottom-width: 0px;
 	border-left-color: rgba(0,231,0,1);
 	border-right-color: rgba(0,231,0,1);
 	border-bottom-color: rgba(0,231,0,1);
-}
+}*/
 
 .pivot .lefttitle .collapse_button {
     float: left;
@@ -183,206 +189,204 @@
 
 .pivot .line_top_0 {
 	border-top-width: 0px;
-	border-top-color: rgb(231,231,231);
 }
 
 .pivot .line_top_1 {
 	border-top-width: 1px;
-	border-top-color: rgb(201,201,201);
+	border-top-color: #eee;
 }
 
 .pivot .line_top_2 {
 	border-top-width: 1px;
-	border-top-color: rgb(51,51,51);
+	border-top-color: #ddd;
 }
 
 .pivot .line_top_3 {
-	border-top-width: 2px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 1px;
+	border-top-color: #ccc;
 }
 
 .pivot .line_top_4 {
-	border-top-width: 3px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 1px;
+	border-top-color: #bbb;
 }
 
 .pivot .line_top_5 {
-	border-top-width: 4px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 1px;
+	border-top-color: #aaa;
 }
 
 .pivot .line_top_6 {
-	border-top-width: 5px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 2px;
+	border-top-color: #999;
 }
 
 .pivot .line_top_7 {
-	border-top-width: 6px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 2px;
+	border-top-color: #888;
 }
 
 .pivot .line_top_8 {
-	border-top-width: 7px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 2px;
+	border-top-color: #777;
 }
 
 .pivot .line_top_9 {
-	border-top-width: 8px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 2px;
+	border-top-color: #666;
 }
 
 .pivot .line_top_10 {
-	border-top-width: 9px;
-	border-top-color: rgb(51,51,51);
+	border-top-width: 2px;
+	border-top-color: #555;
 }
 
 
 
 .pivot .line_bottom_0 {
 	border-bottom-width: 0px;
-	border-bottom-color: rgb(231,231,231);
 }
 
 .pivot .line_bottom_1 {
 	border-bottom-width: 1px;
-	border-bottom-color: rgb(201,201,201);
+	border-bottom-color: #eee;
 }
 
 .pivot .line_bottom_2 {
 	border-bottom-width: 1px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-color: #ddd;
 }
 
 .pivot .line_bottom_3 {
-	border-bottom-width: 2px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 1px;
+	border-bottom-color: #ccc;
 }
 
 .pivot .line_bottom_4 {
-	border-bottom-width: 3px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 1px;
+	border-bottom-color: #bbb;
 }
 
 .pivot .line_bottom_5 {
-	border-bottom-width: 4px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 1px;
+	border-bottom-color: #aaa;
 }
 
 .pivot .line_bottom_6 {
-	border-bottom-width: 5px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 2px;
+	border-bottom-color: #999;
 }
 
 .pivot .line_bottom_7 {
-	border-bottom-width: 6px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 2px;
+	border-bottom-color: #888;
 }
 
 .pivot .line_bottom_8 {
-	border-bottom-width: 7px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 2px;
+	border-bottom-color: #777;
 }
 
 .pivot .line_bottom_9 {
-	border-bottom-width: 8px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 2px;
+	border-bottom-color: #666;
 }
 
 .pivot .line_bottom_10 {
-	border-bottom-width: 9px;
-	border-bottom-color: rgb(51,51,51);
+	border-bottom-width: 2px;
+	border-bottom-color: #555;
 }
 
 
 
 .pivot .line_left_0 {
 	border-left-width: 1px;
-	border-left-color: rgb(231,231,231);
+	border-left-color: #eee;
 }
 .pivot .line_left_1 {
 	border-left-width: 1px;
-	border-left-color: rgb(201,201,201);
+	border-left-color: #eee;
 }
 .pivot .line_left_2 {
 	border-left-width: 1px;
-	border-left-color: rgb(51,51,51);
+	border-left-color: #ddd;
 }
 .pivot .line_left_3 {
-	border-left-width: 2px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 1px;
+	border-left-color: #ccc;
 }
 .pivot .line_left_4 {
-	border-left-width: 3px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 1px;
+	border-left-color: #bbb;
 }
 .pivot .line_left_5 {
-	border-left-width: 4px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 1px;
+	border-left-color: #aaa;
 }
 .pivot .line_left_6 {
-	border-left-width: 5px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 2px;
+	border-left-color: #999;
 }
 .pivot .line_left_7 {
-	border-left-width: 6px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 2px;
+	border-left-color: #888;
 }
 .pivot .line_left_8 {
-	border-left-width: 7px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 2px;
+	border-left-color: #777;
 }
 .pivot .line_left_9 {
-	border-left-width: 8px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 2px;
+	border-left-color: #666;
 }
 .pivot .line_left_10 {
-	border-left-width: 9px;
-	border-left-color: rgb(51,51,51);
+	border-left-width: 2px;
+	border-left-color: #555;
 }
 
 
 .pivot .line_right_0 {
 	border-right-width: 1px;
-	border-right-color: rgb(231,231,231);
+	border-right-color: #eee;
 }
 .pivot .line_right_1 {
 	border-right-width: 1px;
-	border-right-color: rgb(201,201,201);
+	border-right-color: #eee;
 }
 .pivot .line_right_2 {
 	border-right-width: 1px;
-	border-right-color: rgb(51,51,51);
+	border-right-color: #ddd;
 }
 .pivot .line_right_3 {
-	border-right-width: 2px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 1px;
+	border-right-color: #ccc;
 }
 .pivot .line_right_4 {
-	border-right-width: 3px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 1px;
+	border-right-color: #bbb;
 }
 .pivot .line_right_5 {
-	border-right-width: 4px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 1px;
+	border-right-color: #aaa;
 }
 .pivot .line_right_6 {
-	border-right-width: 5px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 2px;
+	border-right-color: #999;
 }
 .pivot .line_right_7 {
-	border-right-width: 6px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 2px;
+	border-right-color: #888;
 }
 .pivot .line_right_8 {
-	border-right-width: 7px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 2px;
+	border-right-color: #777;
 }
 .pivot .line_right_9 {
-	border-right-width: 8px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 2px;
+	border-right-color: #666;
 }
 .pivot .line_right_10 {
-	border-right-width: 9px;
-	border-right-color: rgb(51,51,51);
+	border-right-width: 2px;
+	border-right-color: #555;
 }
 
