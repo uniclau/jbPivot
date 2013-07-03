@@ -66,12 +66,30 @@ Wher options has the next format.
 
 Yo can insert more records to the table dinamicaly:
 
-	$("#mytable").insertRecords([
-		  		{<field_key>:<value>
-		  		 ,...(0..n)
-		  		}
-		  		,...(0..n)
-		  	]);
+          $("#pivot1").data('jbPivot').insertRecords([
+                                                      {id:1 ,gender:"male", age:"30-40",eyes:"green", v:8},
+                                                      {id:2 ,gender:"male", age:"20-30",eyes:"brown", v:7},
+                                                      {id:3 ,gender:"male", age:"30-40",eyes:"brown", v:3},
+                                                      {id:4 ,gender:"female", age:"40-50",eyes:"brown", v:5},
+                                                      {id:5 ,gender:"male", age:"30-40",eyes:"green", v:7},
+                                                      {id:6 ,gender:"male", age:"30-40",eyes:"green", v:9},
+                                                      {id:7 ,gender:"female", age:"40-50",eyes:"green", v:8}
+                                                  ]);
+                                                  
+In order to insert a field, You change the options, meke a reset and then reinsert the data:
+
+          $("#pivot1").data('jbPivot').options.fields.NewField={ field: 'v', agregateType: "sum", groupType:"none" };
+          $("#pivot1").data('jbPivot').reset();
+          $("#pivot1").data('jbPivot').insertRecords([
+                                                      {id:1 ,gender:"male", age:"30-40",eyes:"green", v:8},
+                                                      {id:2 ,gender:"male", age:"20-30",eyes:"brown", v:7},
+                                                      {id:3 ,gender:"male", age:"30-40",eyes:"brown", v:3},
+                                                      {id:4 ,gender:"female", age:"40-50",eyes:"brown", v:5},
+                                                      {id:5 ,gender:"male", age:"30-40",eyes:"green", v:7},
+                                                      {id:6 ,gender:"male", age:"30-40",eyes:"green", v:9},
+                                                      {id:7 ,gender:"female", age:"40-50",eyes:"green", v:8},
+                                                  ]);
+
 		  	
 Goto <http://www.jbPivot.org> to see more examples.
 

@@ -80,6 +80,19 @@
 		        	summary: true
 			}	  
 	  );
+	  $("#reload").click(function () {
+		  $("#pivot1").data('jbPivot').options.fields.Sum2={ field: 'v', agregateType: "sum", groupType:"none" };
+		  $("#pivot1").data('jbPivot').reset();
+          $("#pivot1").data('jbPivot').insertRecords([
+                                                      {id:1 ,gender:"male", age:"30-40",eyes:"green", v:8},
+                                                      {id:2 ,gender:"male", age:"20-30",eyes:"brown", v:7},
+                                                      {id:3 ,gender:"male", age:"30-40",eyes:"brown", v:3},
+                                                      {id:4 ,gender:"female", age:"40-50",eyes:"brown", v:5},
+                                                      {id:5 ,gender:"male", age:"30-40",eyes:"green", v:7},
+                                                      {id:6 ,gender:"male", age:"30-40",eyes:"green", v:9},
+                                                      {id:7 ,gender:"female", age:"40-50",eyes:"green", v:8},
+                                                  ]);
+	  });
 	});
   </script>
 
@@ -87,6 +100,7 @@
   <body>
   	<div id="pivot1">  	
   	</div>
+  	<a id="reload" href="#">reload</a>
   </body>
 
 
