@@ -30,7 +30,7 @@ Initialize the table:
 
 	$("#myTable").jbPivot(options);
 
-Wher options has the next format.
+Where options has the next format.
 
 	var options= {	fields:	{
 						<field_name>: {
@@ -49,7 +49,7 @@ Wher options has the next format.
 			}
 		  	,xfields:["<fieldname>" ,...(0..n) ]
 		  	,yfields:["<fieldname>" ,...(0..n) ]
-		  	,zfields:["<fieldname>" ,...(0..n) ] 
+		  	,zfields:["<fieldname>" ,...(0..n) ]
 		  	,copyright:<true|efalse>
 		  	,summary:<true|false>
 		  	,data: [
@@ -62,6 +62,8 @@ Wher options has the next format.
 		  		// Calculate the formated val
 		  		return formatedVal;
 		  	}
+         ,l_all: "All" // Translation of the word all to be displayed
+         ,l_unused_fields: "Unused fields" //Translation of the word "Unused fields to be displayed"
 		  };
 
 Yo can insert more records to the table dinamicaly:
@@ -75,7 +77,7 @@ Yo can insert more records to the table dinamicaly:
                                                       {id:6 ,gender:"male", age:"30-40",eyes:"green", v:9},
                                                       {id:7 ,gender:"female", age:"40-50",eyes:"green", v:8}
                                                   ]);
-                                                  
+
 In order to insert a field, You change the options, meke a reset and then reinsert the data:
 
           $("#pivot1").data('jbPivot').options.fields.NewField={ field: 'v', agregateType: "sum", groupType:"none" };
@@ -90,17 +92,17 @@ In order to insert a field, You change the options, meke a reset and then reinse
                                                       {id:7 ,gender:"female", age:"40-50",eyes:"green", v:8},
                                                   ]);
 
-		  	
+
 Goto <http://www.jbPivot.org> to see more examples.
 
 
 ## Author
 
-Uniclau S.L. <http://www.uniclau.com> 
-<info@uniclau.com> 
+Uniclau S.L. <http://www.uniclau.com>
+<info@uniclau.com>
 
 ## License
- 
+
  	Copyright 2013 Uniclau S.L. (www.uniclau.com)
 
 	This program is free software: you can redistribute it and/or modify
@@ -114,6 +116,5 @@ Uniclau S.L. <http://www.uniclau.com>
     GNU General Public License for more details.
 
 	There is a copy of the license in the COPYING file in this directory.
-	
+
     You can also find it at <http://www.gnu.org/licenses/>.
-    
