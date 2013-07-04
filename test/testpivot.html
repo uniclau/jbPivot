@@ -42,16 +42,17 @@
 
       <script type="text/javascript">
          $(document).ready(function() {
+            var i = 0;
             $("#pivot1").jbPivot(
                     {
                        fields: {
-                          Id: {field: 'id', sort: "asc", agregateType: "none"},
-                          Gender: {field: 'gender', sort: "asc", showAll: true, agregateType: "distinct", label: "GENDER"},
-                          Age: {field: 'age', sort: "asc", age: "Age", showAll: true, agregateType: "distinct"},
-                          Eyes: {field: 'eyes', sort: "asc", showAll: false, agregateType: "distinct"},
-                          Count: {agregateType: "count", groupType: "none"},
-                          Sum: {field: 'v', agregateType: "sum", groupType: "none"},
-                          Average: {field: 'v', agregateType: "average", groupType: "none", formatter: function(V, f) {
+                          id: {field: 'id', sort: "asc", agregateType: "none"},
+                          gender: {field: 'gender', sort: "asc", showAll: true, agregateType: "distinct", label: "Gender"},
+                          age: {field: 'age', sort: "asc", age: "Age", showAll: true, agregateType: "distinct", label: "Age"},
+                          state: {field: 'state', sort: "asc", showAll: false, agregateType: "distinct", label: "State"},
+                          count: {agregateType: "count", groupType: "none", label: "Count"},
+                          sum: {field: 'val', agregateType: "sum", groupType: "none", label: "Sum"},
+                          average: {field: 'val', agregateType: "average", groupType: "none", label: "Average", formatter: function(V, f) {
                                 var res = null;
                                 if (typeof(V) === "number") {
                                    res = V.toFixed(2);
@@ -59,40 +60,59 @@
                                 return res;
                              }}
                        },
-                       xfields: ["Gender", "Eyes", "Id"],
-                       yfields: ["Age"],
-                       zfields: ["Count", "Average"],
+                       xfields: ["gender", "age"],
+                       yfields: ["state"],
+                       zfields: ["sum", "average"],
                        data: [
-                          {id: 1, gender: "male", age: "30-40", eyes: "green", v: 8},
-                          {id: 2, gender: "male", age: "20-30", eyes: "brown", v: 7},
-                          {id: 3, gender: "male", age: "30-40", eyes: "brown", v: 3},
-                          {id: 4, gender: "female", age: "40-50", eyes: "brown", v: 5},
-                          {id: 5, gender: "male", age: "30-40", eyes: "green", v: 7},
-                          {id: 6, gender: "male", age: "30-40", eyes: "green", v: 9},
-                          {id: 7, gender: "female", age: "40-50", eyes: "green", v: 8},
-                          {id: 8, gender: "female", age: "50-60", eyes: "brown", v: 6},
-                          {id: 9, gender: "male", age: "30-40", eyes: "brown", v: 9},
-                          {id: 10, gender: "male", age: "40-50", eyes: "blue", v: 7},
-                          {id: 11, gender: "male", age: "30-40", eyes: "blue", v: 4},
-                          {id: 12, gender: "male", age: "20-30", eyes: "black", v: 2}
+                          {id: ++i, gender: "Man", age: "30-40", state: "NY", val: 8},
+                          {id: ++i, gender: "Man", age: "20-30", state: "CO", val: 7},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NY", val: 3},
+                          {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 5},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NE", val: 7},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NE", val: 9},
+                          {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 8},
+                          {id: ++i, gender: "Woman", age: "50-60", state: "CL", val: 6},
+                          {id: ++i, gender: "Man", age: "30-40", state: "CO", val: 9},
+                          {id: ++i, gender: "Man", age: "40-50", state: "NY", val: 7},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NJ", val: 4},
+                          {id: ++i, gender: "Man", age: "20-30", state: "NJ", val: 7},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NY", val: 3},
+                          {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 5},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NE", val: 7},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NE", val: 9},
+                          {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 8},
+                          {id: ++i, gender: "Woman", age: "50-60", state: "NE", val: 6},
+                          {id: ++i, gender: "Man", age: "30-40", state: "CO", val: 9},
+                          {id: ++i, gender: "Man", age: "40-50", state: "NY", val: 7},
+                          {id: ++i, gender: "Woman", age: "30-40", state: "NY", val: 4},
+                          {id: ++i, gender: "Man", age: "20-30", state: "NJ", val: 2},
+                          {id: ++i, gender: "Man", age: "30-40", state: "CO", val: 9},
+                          {id: ++i, gender: "Man", age: "40-50", state: "NY", val: 7},
+                          {id: ++i, gender: "Woman", age: "30-40", state: "NY", val: 4},
+                          {id: ++i, gender: "Man", age: "20-30", state: "NJ", val: 2},
+                          {id: ++i, gender: "Man", age: "30-40", state: "NE", val: 9},
+                          {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 8},
+                          {id: ++i, gender: "Woman", age: "50-60", state: "CL", val: 6},
+                          {id: ++i, gender: "Man", age: "30-40", state: "CO", val: 9}
                        ],
                        copyright: true,
                        summary: true,
-                       l_all: "Todos",
-                       l_unused_fields: "Campos no utilizados"
+                       l_all: "All",
+                       l_unused_fields: "Available fields"
                     }
             );
             $("#reload").click(function() {
-               $("#pivot1").data('jbPivot').options.fields.Sum2 = {field: 'v', agregateType: "sum", groupType: "none"};
+               var i = 0;
+               $("#pivot1").data('jbPivot').options.fields.Sum2 = {field: 'v', agregateType: "sum", groupType: "none", label: "New Sum"};
                $("#pivot1").data('jbPivot').reset();
                $("#pivot1").data('jbPivot').insertRecords([
-                  {id: 1, gender: "male", age: "30-40", eyes: "green", v: 8},
-                  {id: 2, gender: "male", age: "20-30", eyes: "brown", v: 7},
-                  {id: 3, gender: "male", age: "30-40", eyes: "brown", v: 3},
-                  {id: 4, gender: "female", age: "40-50", eyes: "brown", v: 5},
-                  {id: 5, gender: "male", age: "30-40", eyes: "green", v: 7},
-                  {id: 6, gender: "male", age: "30-40", eyes: "green", v: 9},
-                  {id: 7, gender: "female", age: "40-50", eyes: "green", v: 8},
+                  {id: ++i, gender: "Man", age: "30-40", state: "NJ", val: 8},
+                  {id: ++i, gender: "Man", age: "20-30", state: "CO", val: 7},
+                  {id: ++i, gender: "Man", age: "30-40", state: "CL", val: 3},
+                  {id: ++i, gender: "Woman", age: "40-50", state: "LA", val: 5},
+                  {id: ++i, gender: "Man", age: "30-40", state: "NY", val: 7},
+                  {id: ++i, gender: "Man", age: "30-40", state: "NY", val: 9},
+                  {id: ++i, gender: "Woman", age: "40-50", state: "CO", val: 8},
                ]);
             });
          });
