@@ -1,0 +1,36 @@
+{
+  "name": "jbpivot",
+  "description": "A simple jQuery pivot table widget",
+  "version": "0.1.0",
+  "main": "build/jbPivot.min.js",
+  "author": {
+    "name": "Jordi Moraleda",
+    "email": "info@uniclau.com",
+    "url": "http://www.uniclau.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/uniclau/jbPivot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uniclau/jbPivot.git"
+  },
+  "keywords": [
+    "pivot"
+  ],
+  "license": "GPL",
+  "dependencies": {
+  	"jquery": "*",
+  	"jquery-ui": "*"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt": "~0.4.2"
+  },
+  "scripts": {
+    "build": "npm install && grunt",
+    "test": "grunt"
+  }
+}
