@@ -16,7 +16,10 @@
     "url": "https://github.com/uniclau/jbPivot.git"
   },
   "keywords": [
-    "pivot"
+    "pivot",
+    "table",
+    "grid",
+    "grouping"
   ],
   "license": "GPL",
   "dependencies": {
